@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # vue_quasar
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# VueTest
+>>>>>>> c1c2567b094df06465fae169e54b45b6124b8f59
