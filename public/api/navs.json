@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "name": "home",
+      "title": "首頁",
+      "secTitle": "Home Page",
+      "icon": "home"
+    },
+    {
+      "id": 2,
+      "name": "product-list",
+      "title": "產品列表",
+      "secTitle": "product-list",
+      "icon": "list"
+    },
+    {
+      "id": 3,
+      "name": "create-product",
+      "title": "產品建立",
+      "secTitle": "create product",
+      "icon": "chat"
+    },
+    {
+      "id": 4,
+      "name": "user-info",
+      "title": "使用者資訊",
+      "secTitle": "user info",
+      "icon": "person"
+    },
+    {
+      "id": 5,
+      "name": "api-test",
+      "title": "API資訊",
+      "secTitle": "API Test",
+      "icon": "api"
+    },
+    {
+      "id": 6,
+      "name": "PostCode",
+      "title": "郵遞區號 Test",
+      "secTitle": "Post Code",
+      "icon": "api"
+    }
+  ]

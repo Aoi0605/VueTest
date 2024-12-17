@@ -3,67 +3,33 @@
     <q-drawer v-if="leftDrawerOpen" show-if-above bordered class="bg-grey-2">
       <q-list>
         <q-item-label header>Links</q-item-label>
-        <q-item clickable tag="router-Link" :to="{ name: 'home' }">
-          <q-item-section avatar>
-            <q-icon name="home" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>首頁</q-item-label>
-            <q-item-label caption>Home Page</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="router-Link" :to="{ name: 'product-list' }">
-          <q-item-section avatar>
-            <q-icon name="list" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>產品列表</q-item-label>
-            <q-item-label caption>Product List</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="router-Link" :to="{ name: 'create-product' }">
-          <q-item-section avatar>
-            <q-icon name="chat" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>新增商品</q-item-label>
-            <q-item-label caption>Create Product</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="router-Link" :to="{ name: 'user-info' }">
-          <q-item-section avatar>
-            <q-icon name="person" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>使用者資訊</q-item-label>
-            <q-item-label caption>User Info</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="router-Link" :to="{ name: 'api-test' }">
-          <q-item-section avatar>
-            <q-icon name="api" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>API 測試</q-item-label>
-            <q-item-label caption>API Test</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="router-Link" :to="{ name: 'PostCode' }">
-          <q-item-section avatar>
-            <q-icon name="api" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>PostCode</q-item-label>
-            <q-item-label caption>PostCode</q-item-label>
-          </q-item-section>
-        </q-item>
+        <div v-for="nav in navs" :key="nav.id">
+          <q-item clickable tag="router-link" :to="{ name: nav.name }">
+            <q-item-section avatar>
+              <q-icon :name="nav.icon" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>{{ nav.title }}</q-item-label>
+              <q-item-label caption>{{ nav.secTitle }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </div>
       </q-list>
     </q-drawer>
   </div>
 </template>
 
 <script setup>
-import { defineProps, toRef } from "vue";
+import axios from "axios";
+import { defineProps, toRef, onMounted, ref } from "vue";
+
+const navs = ref([]);
+
+onMounted(() =>
+  axios.get("/api/navs.json").then(({ data }) => {
+    navs.value = data;
+  })
+);
 
 const props = defineProps({
   leftDrawerOpen: Boolean,
